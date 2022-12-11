@@ -14,4 +14,8 @@ export class ClienteService {
   create(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(this.url, cliente)
   }
+
+  logar(cliente:Cliente):Observable<Cliente>{
+    return this.http.post<Cliente>(environment.apiCliente + "login", cliente)
+  }
 }
