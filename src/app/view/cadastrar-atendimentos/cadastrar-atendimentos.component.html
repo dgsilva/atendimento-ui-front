@@ -1,1 +1,50 @@
-<p>cadastrar-atendimentos works!</p>
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card-body">
+            <h4>Cadastre sua conta de cliente:</h4>
+            <p>Preencha o formulário para criar sua conta</p>
+            <hr />
+            <form [formGroup]="FormAtendimento">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label>Data:</label>
+                      <input type="date" class="form-control" formControlName="data"/>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label>Hora:</label>
+                      <input type="time" class="form-control" formControlName="hora"/>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label>Assunto:</label>
+                      <input type="text" class="form-control" formControlName="assunto"/>
+                    </div>
+                  </div>
+
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label>Observacoes:</label>
+                      <input type="text" class="form-control" formControlName="observacoes"/>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label>Email:</label>
+                      <input type="text" class="form-control" formControlName="emailCliente"/>
+                    </div>
+                  </div>
+
+                  <input type="submit" class="btn btn-primary" (click)="salvar()" value="Realizar Cadastro" />
+
+            </form>
+        </div>
+    </div>
+</div>
