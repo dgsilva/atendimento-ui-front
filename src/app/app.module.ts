@@ -9,6 +9,7 @@ import { CriarContaComponent } from './view/criar-conta/criar-conta.component';
 import { AcessarContaComponent } from './view/acessar-conta/acessar-conta.component';
 import { NavbarComponent } from './view/navbar/navbar.component';
 import { CadastrarAtendimentosComponent } from './view/cadastrar-atendimentos/cadastrar-atendimentos.component';
+import { ConsultarAtendimentosComponent } from './view/consultar-atendimentos/consultar-atendimentos.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CadastrarAtendimentosComponent } from './view/cadastrar-atendimentos/ca
     AcessarContaComponent,
     NavbarComponent,
     CadastrarAtendimentosComponent,
+    ConsultarAtendimentosComponent,
   ],
   imports: [
     BrowserModule,

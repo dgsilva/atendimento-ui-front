@@ -1,0 +1,26 @@
+<h1>Listagem de Atendimento</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Codigo:</th>
+      <th>Data:</th>
+      <th>Hora:</th>
+      <th>Assunto:</th>
+      <th>Observações:</th>
+      <th>Email:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let a of atendimentos">
+      <td>{{a.idAtendimento}}</td>
+      <td>{{a.data}}</td>
+      <td>{{a.hora}}</td>
+      <td>{{a.assunto}}</td>
+      <td>{{a.observacoes}}</td>
+      <td>{{a.emailCliente}}</td>
+    </tr>
+  </tbody>
+
+
+</table>

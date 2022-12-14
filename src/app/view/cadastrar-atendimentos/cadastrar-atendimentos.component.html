@@ -4,6 +4,11 @@
             <h4>Cadastre sua conta de cliente:</h4>
             <p>Preencha o formulário para criar sua conta</p>
             <hr />
+            <div *ngIf="mensagem" class="mb-3 mt-3 alert alert-secondary
+            alert-dismissible fade show" role="alert">
+              <button type="button" (click)="mensagem = ''" class="btn-close" aria-label="Close"></button>
+              <strong>{{mensagem}}</strong>
+            </div>
             <form [formGroup]="FormAtendimento">
 
                 <div class="row mb-3">

@@ -15,4 +15,8 @@ create(atendimento:Atendimento):Observable<Atendimento>{
  return this.http.post<Atendimento>(this.url, atendimento)
 }
 
+findAll():Observable<Atendimento[]>{
+ return this.http.get<Atendimento[]>(this.url);
+}
+
 }
