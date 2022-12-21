@@ -2,8 +2,6 @@ import { Autenticacao } from './../../../models/Autenticacao';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ClienteService } from 'src/app/services/cliente.service';
-import { Cliente } from 'src/models/clientes';
 import { AuthenticationHelpers } from 'src/app/helpers/Authhelpers';
 import { AutenticacaoServices } from 'src/app/services/autenticacao.service';
 
@@ -20,7 +18,7 @@ export class AcessarContaComponent implements OnInit {
     this.logar = new Autenticacao();
 
     if(this.authHelpers.get()!=null){
-      this.route.navigate([''])
+      this.route.navigate(['/finalizar-conta'])
     }
   }
 
@@ -46,10 +44,10 @@ export class AcessarContaComponent implements OnInit {
         auth.nome = response.data.nome;
         auth.email = response.data.email;
         auth.telefone = response.data.telefone;
-        auth.acessTokens = response.acessTokens
+        auth.acessTokens = response.acessTokens;
         this.authHelpers.signIn(auth);
 
-        this.route.navigate(['/cadastrar-atendimentos'])
+        this.route.navigate(['/finalizar-conta'])
       },
 
       error:(e)=>{
