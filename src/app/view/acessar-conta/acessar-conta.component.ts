@@ -1,8 +1,11 @@
+import { Autenticacao } from './../../../models/Autenticacao';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Cliente } from 'src/models/clientes';
+import { AuthenticationHelpers } from 'src/app/helpers/Authhelpers';
+import { AutenticacaoServices } from 'src/app/services/autenticacao.service';
 
 @Component({
   selector: 'app-acessar-conta',
@@ -10,11 +13,15 @@ import { Cliente } from 'src/models/clientes';
   styleUrls: ['./acessar-conta.component.css']
 })
 export class AcessarContaComponent implements OnInit {
- cliente:Cliente;
+  logar:Autenticacao
   mensagem:string = '';
 
-  constructor(private clienteService:ClienteService, private route:Router) {
-    this.cliente = new Cliente();
+  constructor(private authService:AutenticacaoServices, private route:Router, private authHelpers:AuthenticationHelpers) {
+    this.logar = new Autenticacao();
+
+    if(this.authHelpers.get()!=null){
+      this.route.navigate([''])
+    }
   }
 
   ngOnInit(): void {
@@ -29,10 +36,19 @@ export class AcessarContaComponent implements OnInit {
  }
   acessar(){
     this.mensagem = '';
-    this.clienteService.logar(this.formLogin.value).subscribe({
-      next:(data:any)=>{
-        this.cliente = data;
+    this.authService.logar(this.formLogin.value).subscribe({
+      next:(response:any)=>{
+        this.logar = response;
         this.formLogin.reset();
+
+        let auth = new Autenticacao();
+        auth.idCliente = response.data.idCliente;
+        auth.nome = response.data.nome;
+        auth.email = response.data.email;
+        auth.telefone = response.data.telefone;
+        auth.acessTokens = response.acessTokens
+        this.authHelpers.signIn(auth);
+
         this.route.navigate(['/cadastrar-atendimentos'])
       },
 
